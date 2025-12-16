@@ -15,7 +15,7 @@
 ```bash
 kc.bat start-dev --hostname=localhost
 ```
-## 🚀自定义认证模块的部署&配置
+## 🎨自定义认证模块的部署&配置
 ### 第一阶段：自定义模块编译与部署
 **编译模块:**   
 导航至认证模块custom-authenticator根目录，执行 Maven 编译和打包命令，生成 JAR 包：
@@ -35,13 +35,22 @@ JAR 包安装成功后，会被 Keycloak 服务器自动加载。此时可以访
 ```bash
 http://localhost:8080/admin
 ```
-**Keycloak 管理控制台配置**
+### 第二阶段：Keycloak 管理控制台配置
 在 Keycloak 服务器启动后，如果是**初次构建**，则需要完成以下自定义配置：  
 **配置领域(Realm)**: 创建或选择目标领域。  
 **创建新的认证流（Authentication Flow）**: 导航至 Authentication -> Flows 选项卡，创建一个新流（例如命名为 My Authentication Flow）。  
-**添加自定义执行器（Authenticator）**: 在新流中，添加认证执行器（例如命名为 My Custom Authenticator）。    
+**添加自定义执行器（Authenticator）**: 在新流中，添加认证执行器（例如命名为 My Custom Authenticator）。  
 **绑定认证流**: 将 Browser Flow（或相应的客户端认证流程）设置为刚创建的 My Authentication Flow。  
+
 如果**已创建过**自定义领域，则执行以下操作导入领域：  
 · 在左侧导航栏，点击 Add realm。  
 · 选择 Import，上传 realm-export.json 文件（在config文件夹下）。  
 这会自动创建包含自定义认证流和所需客户端的领域。
+
+### 第三阶段：界面显示与自定义主题
+自定义主题文件位于仓库的 /themes/mycustomtheme 目录下。在完成 Keycloak 认证模块的部署后，需要执行以下操作以应用自定义界面：  
+· **复制主题文件：** 将项目 Git 仓库中的 /themes/ 目录完整复制到本地 Keycloak 服务器的安装目录下，确保存在 keycloak-999.0.0-SNAPSHOT\themes\mycustomtheme 文件夹。  
+· **在控制台启用：**
+登录 Keycloak 管理界面。  
+导航至 Realm Settings -> Themes 选项卡。  
+在 Login Theme（登录主题）下拉菜单中，确保选择 mycustomtheme。
