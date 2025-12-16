@@ -40,7 +40,7 @@ JAR 包安装成功后，会被 Keycloak 服务器自动加载。此时可以访
 http://localhost:8080/admin
 ```
 ### 第二阶段：Keycloak 管理控制台配置
-❌如果是**初次构建**，则需要完成以下自定义配置：  
+❌如果是**初次构建**，则需要完成以下自定义配置：    
 **配置领域(Realm)**: 创建或选择目标领域。  
 **创建新的认证流（Authentication Flow）**: 导航至 Authentication -> Flows 选项卡，创建一个新流（例如命名为 My Authentication Flow）。  
 **添加自定义执行器（Authenticator）**: 在新流中，添加认证执行器（例如命名为 My Custom Authenticator）。  
