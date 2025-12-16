@@ -82,6 +82,7 @@ Keycloak 拦截：Keycloak 认证流启动，首先调用 My Custom Authenticato
    |——— ❌ 失败：用户被重定向到账号密码登录界面，并显示失败提示。  
 **需求目标：**   
 **1. 核心认证逻辑实现 (custom-authenticator)** ：完成 custom-authenticator 模块内部的 authenticate() 方法逻辑，实现与 credential-server 的交互和认证决策。  
-**2. 前端主题实现与流程展示 (themes/mycustomtheme)**：实现认证流程中所需的用户界面，以提供良好的用户体验和流程反馈。
-<img width="629" height="406" alt="屏幕截图 2025-12-16 224847" src="https://github.com/user-attachments/assets/c6d00433-2050-434a-b5c7-ea7dd9f24326" />
+**2. 前端主题实现与流程展示 (themes/mycustomtheme)**：实现认证流程中所需的用户界面，以提供良好的用户体验和流程反馈。  
+
+<img width="629" height="406" alt="屏幕截图 2025-12-16 224847" src="https://github.com/user-attachments/assets/c6d00433-2050-434a-b5c7-ea7dd9f24326" />  
 如图为当前设计的认证流程，有其它想法和建议也请提出，感谢配合~
