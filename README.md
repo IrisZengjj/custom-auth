@@ -2,20 +2,20 @@
 ## 📖项目简介
 本项目是一个基于Keycloak平台开发的自定义认证器。认证模块在custom-authenticator实现，核心目的是Keycloak提供的标准身份验证流程增加一层额外的安全校验机制，即基于移动终端设备属性的凭证认证，满足跨主体数据鉴权系统的安全要求。本模块在Keycloak认证流中充当协调者，将认证决策转交给Credential-Server服务。代码结构如下：  
 **custom-authenticator：自定义认证开发模块，实现用户访问应用服务时触发认证，进行访问控制（重点开发这个）；**  
-**themes/mycustomtheme：** 基于Keycloak模板的主题文件，用于修改keycloak自定义登录页面的样式；  
-**credential-server：** 后端服务器，连接终端侧的采集插件，生成并为认证端提供身份凭证，管理mysql数据库；  
-**config/realm-export.json：** 自定义领域配置（可以直接导入，也可以不使用，自己配置）。
+**themes/mycustomtheme**： 基于Keycloak模板的主题文件，用于修改keycloak自定义登录页面的样式；  
+**credential-server**： 后端服务器，连接终端侧的采集插件，生成并为认证端提供身份凭证，管理mysql数据库；  
+**config/realm-export.json**： 自定义领域配置（可以直接导入，也可以不使用，自己配置）。
 #### 核心认证流程
-**触发**: Keycloak 认证流在运行时调用本模块。  
-**数据交互**: 本模块负责与Credential-Server通信，获取比对结果。  
-**决策**: 若设备凭证比对成功，用户直接通过设备认证；若失败，认证流程将导向传统的账号密码登录界面。
+**触发**： Keycloak 认证流在运行时调用本模块。  
+**数据交互**： 本模块负责与Credential-Server通信，获取比对结果。  
+**决策**： 若设备凭证比对成功，用户直接通过设备认证；若失败，认证流程将导向传统的账号密码登录界面。
 ## 🏗️环境依赖与Keycloak实例构建
 ### 环境依赖
 本项目依赖于 Keycloak 24.0.5 版本的源码进行编译和部署。需从 https://github.com/keycloak/keycloak/releases/tag/24.0.5 下载 Source code (zip)后，本地构建实例生成 keycloak-999.0.0-SNAPSHOT。推荐使用 JDK 17 或更高版本。
 ### 开发实例构建步骤
 要运行本项目，要先完成 Keycloak 服务器的构建和启动：  
-· **源码构建**: 下载 Keycloak 24.0.5 源码，并在本地完成构建，生成版本名为 **keycloak-999.0.0-SNAPSHOT** 的服务器发行包。  
-· **启动服务器**: 进入本地构建的 Keycloak 服务器 bin 目录（例如：D:\keycloak\keycloak-main\keycloak-999.0.0-SNAPSHOT\bin），执行以下命令，即可启动开发模式服务器：
+· **源码构建**： 下载 Keycloak 24.0.5 源码，并在本地完成构建，生成版本名为 **keycloak-999.0.0-SNAPSHOT** 的服务器发行包。  
+· **启动服务器**： 进入本地构建的 Keycloak 服务器 bin 目录（例如：D:\keycloak\keycloak-main\keycloak-999.0.0-SNAPSHOT\bin），执行以下命令，即可启动开发模式服务器：
 ```bash
 kc.bat start-dev --hostname=localhost
 ```
@@ -53,8 +53,8 @@ http://localhost:8080/admin
 
 ### 第三阶段：界面显示与自定义主题
 自定义主题文件位于仓库的 /themes/mycustomtheme 目录下。在完成 Keycloak 认证模块的部署后，需要执行以下操作以应用自定义界面：  
-· **复制主题文件：** 将项目 Git 仓库中的 /themes/ 目录完整复制到本地 Keycloak 服务器的安装目录下，确保存在 keycloak-999.0.0-SNAPSHOT\themes\mycustomtheme 文件夹。  
-· **在控制台启用：**
+· **复制主题文件**： 将 /themes/ 目录完整复制到本地 Keycloak 服务器的安装目录下，确保存在 keycloak-999.0.0-SNAPSHOT\themes\mycustomtheme 文件夹。  
+· **在控制台启用**：  
 登录 Keycloak 管理界面。  
 导航至 Realm Settings -> Themes 选项卡。  
 在 Login Theme（登录主题）下拉菜单中，确保选择 mycustomtheme。
