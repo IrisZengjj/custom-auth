@@ -44,7 +44,7 @@ http://localhost:8080/admin
 **配置领域(Realm)**: 创建或选择目标领域。  
 **创建新的认证流（Authentication Flow）**: 导航至 Authentication -> Flows 选项卡，创建一个新流（例如命名为 My Authentication Flow）。  
 **添加自定义执行器（Authenticator）**: 在新流中，添加认证执行器（例如命名为 My Custom Authenticator）。  
-**绑定认证流**: 将 Browser Flow（或相应的客户端认证流程）设置为刚创建的 My Authentication Flow。  
+**绑定认证流**: 将 Browser Flow 设置为刚创建的 My Authentication Flow。  
 
 ✅如果**已创建过**自定义领域，则执行以下操作导入：  
 · 在左侧导航栏，点击 Add realm。  
@@ -85,4 +85,4 @@ Keycloak 拦截：Keycloak 认证流启动，首先调用 My Custom Authenticato
 **2. 前端主题实现与流程展示 (themes/mycustomtheme)**：实现认证流程中所需的用户界面，以提供良好的用户体验和流程反馈。  
 
 <img width="629" height="406" alt="屏幕截图 2025-12-16 224847" src="https://github.com/user-attachments/assets/c6d00433-2050-434a-b5c7-ea7dd9f24326" />  
-如图为当前设计的认证流程，有其它想法和建议也请提出，感谢配合~
+<br>如图为当前设计的认证流程，有其它想法和建议也请提出，感谢配合~
