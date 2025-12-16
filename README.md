@@ -3,7 +3,7 @@
 本项目是一个基于Keycloak平台开发的自定义认证器。认证模块在custom-authenticator实现，核心目的是Keycloak提供的标准身份验证流程增加一层额外的安全校验机制，即基于移动终端设备属性的凭证认证，满足跨主体数据鉴权系统的安全要求。本模块在Keycloak认证流中充当协调者，将认证决策转交给Credential-Server服务。代码结构如下：  
 **custom-authenticator：自定义认证开发模块，实现用户访问应用服务时触发认证，进行访问控制（重点开发这个）；**  
 **themes/mycustomtheme**： 基于Keycloak模板的主题文件，用于修改keycloak自定义登录页面的样式；  
-**credential-server**： 后端服务器，连接终端侧的采集插件，生成并为认证端提供身份凭证，管理mysql数据库；  
+**credential-server**： 后端服务器，与终端侧的采集插件连接，接收终端数据，生成与存储身份凭证，管理mysql数据库；  
 **config/realm-export.json**： 自定义领域配置（可以直接导入，也可以不使用，自己配置）。
 #### 核心认证流程
 **触发**： 用户访问时触发认证。  
